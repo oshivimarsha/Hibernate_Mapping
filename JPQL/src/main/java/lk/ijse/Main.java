@@ -24,7 +24,31 @@ public class Main {
             System.out.println(customer);
         }*/
 
+        //update,
+        /*  Query query = session.createQuery("update Customer c set c.name = :name where c.id = :id");
+        query.setParameter("name", "Jack");
+        query.setParameter("id", 1);
+        query.executeUpdate();*/
 
+        // delete
+        /*  Query query = session.createQuery("delete from Customer c where c.cid = :id");
+        query.setParameter("id", 6);
+        query.executeUpdate();
+         */
+
+        //searchByName
+         /* Query query1 = session.createQuery("select  c.name from Customer c");
+        List<String> customers = query1.list();
+        for (String customer : customers) {
+            System.out.println(customer);
+        }*/
+
+        //join Query
+        Query query1 = session.createQuery("select c.id,c.name,a.city,a.road from Address a join a.customer c");
+        List<Object[]> customers = query1.list();
+        for (Object[] customer : customers) {
+            System.out.println(Arrays.toString(customer));
+        }
 
         transaction.commit();
         session.close();
